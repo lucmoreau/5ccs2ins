@@ -11,7 +11,7 @@ app.get('/', function(request, response) {
 app.counters={count:0};
 
 function hostname_and_port(request) {
-    return (request.hostname || request.ip).replace("::ffff:","") + ":" + (request.port);
+    return request.hostname;
 }
 
 app.post('/resource', function(request, response) {
