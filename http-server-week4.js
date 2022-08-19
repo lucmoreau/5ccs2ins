@@ -18,7 +18,8 @@ app.post('/resource', function(request, response) {
     console.log("post");
     app.counters.count=app.counters.count+1;
     const v=app.counters.count;
-    response.redirect(303, request.protocol + "://" + hostname_and_port(request) + request.path + "/" + v);
+    const protocol="https"; //request.protocol
+    response.redirect(303, protocol + "://" + hostname_and_port(request) + request.path + "/" + v);
 });
 
 app.get('/resource', function(request, response) {
