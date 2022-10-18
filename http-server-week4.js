@@ -68,3 +68,39 @@ app.get('/exit', function(request, response) {
     process.exit(0);
 })
 
+
+app.state={};
+
+app.get('/resource/state/:id', function(request, response) {
+    console.log("get state");
+    let id = request.params.id;
+
+
+    response.format({
+
+
+        'application/json': function () {
+            response.send(app.state[id])
+        },
+
+        default: function () {
+            // log the request and respond with 406
+            response.status(406).send('Not Acceptable')
+        }
+    });
+});
+
+
+app.put('/resource/state/:id', function(request, response) {
+    console.log("put");
+    let id = request.params.id;
+
+    let old_state=app.state[id];
+
+
+    app.state[id]=request.body;
+
+    response.send(old_state);
+
+
+});
