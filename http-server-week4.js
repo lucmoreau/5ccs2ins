@@ -1,8 +1,11 @@
 var express = require('express')
 var app = express()
+const bodyParser = require('body-parser');
+
 
 app.set('port', (process.env.PORT || 9090));
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json());
 
 app.get('/', function(request, response) {
     response.send('Hello World!')
