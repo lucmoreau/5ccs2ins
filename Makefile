@@ -7,7 +7,15 @@ post:
 get.state:
 	curl -X GET https://immense-coast-33915.herokuapp.com/resource/state/1
 
-put.state:
-	curl -X PUT -H "Content-Type: application/json" -d '{"a":"value_a","b":"value_b"}' https://immense-coast-33915.herokuapp.com/resource/state/1
+JSON:={"a":"value_a","time": "$(shell date)"}
 
+put.state:
+	curl -X PUT -H "Content-Type: application/json" -d '${JSON}' https://immense-coast-33915.herokuapp.com/resource/state/1
+
+
+heroku.push:
+	git push heroku main
+
+heroku.logs:
+	heroku logs
 

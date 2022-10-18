@@ -72,6 +72,11 @@ app.get('/exit', function(request, response) {
 })
 
 
+//// example using PUT as requested in class on 13/10/2022
+//// we consider here the resource identified by URL path /resource/state/:id
+//// GET is used to obtain a JSON representation
+//// PUT is used to modify the JSON representation
+
 app.state={};
 
 app.get('/resource/state/:id', function(request, response) {
